@@ -276,10 +276,10 @@ export default class Endpoint extends EventEmitter {
      * @param call {Call} Call instance
      * @returns {Promise}
      */
-    hangupCall(call) {
+    hangupCall(callId) {
         // TODO: Add possibility to pass code and reason for hangup.
         return new Promise((resolve, reject) => {
-            NativeModules.PjSipModule.hangupCall(call.getId(), (successful, data) => {
+            NativeModules.PjSipModule.hangupCall(callId, (successful, data) => {
                 if (successful) {
                     resolve(data);
                 } else {
